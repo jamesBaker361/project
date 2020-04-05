@@ -11,7 +11,8 @@ def time_series_chart(**series):
     df.fillna(0,inplace=True)
     colors = iter(cm.rainbow(np.linspace(0, 1, len(series))))
     for k in series.keys():
-        plt.plot(df.index,df[k],color=next(colors),label=k)
+        plt.plot(df.index,(df[k]-1)*100,color=next(colors),label=k)
+    plt.ylabel('% growth')
     plt.legend()
     plt.show()
     
