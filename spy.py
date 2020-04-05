@@ -7,3 +7,13 @@ spy=pd.Series(closing, index=reversed([h for h in history.keys()]))
 spy_pct=spy.pct_change()
 spy_pct.name='pct_spy'
 spy_pct.iloc[0]=0
+benchmark=1+spy_pct
+for x in range(1,len(benchmark)):
+    benchmark.iloc[x]*=benchmark.iloc[x-1]
+    
+def benchmark_start(start_date,spy_pct=spy_pct):
+    benchmark=1+spy_pct[start_date:]
+    benchmark.iloc[0]=1
+    for x in range(1,len(benchmark)):
+        benchmark.iloc[x]*=benchmark.iloc[x-1]
+    return benchmark
