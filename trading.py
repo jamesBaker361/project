@@ -2,8 +2,6 @@ import pandas as pd
 import numpy as np
 from matplotlib import cm, pyplot as plt
 
-x=10
-
 def time_series_chart(**series):
     colours = cm.rainbow(
         np.linspace(0, 1,len(series )))

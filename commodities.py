@@ -29,6 +29,12 @@ for x in cols:
     hard_tech['macd'+x[x.find('_'):]]=talib.MACD(hard[x])[0]
     hard_tech['rsi'+x[x.find('_'):]]=talib.RSI(hard[x])
     
+hard_tech_pct=pd.DataFrame()
+cols=hard.columns
+for x in cols:
+    hard_tech_pct['ppo'+x[x.find('_'):]]=talib.PPO(hard[x])[0]
+    hard_tech_pct['rsi'+x[x.find('_'):]]=talib.RSI(hard[x])
+    
 hard_tech=hard_tech.dropna()
 
 hard_pct=pd.DataFrame()
